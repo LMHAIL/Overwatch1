@@ -107,9 +107,60 @@
   .screen h1{font-size:clamp(2.4rem,8vw,5rem);letter-spacing:6px;background:linear-gradient(90deg,#ffb648,#ff7e5f,#ff5a5a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 40px rgba(255,126,95,.3);margin-bottom:2px;font-weight:900;line-height:1.05;}
   .screen h1 .sub{display:block;font-size:.28em;letter-spacing:14px;color:#9fb3c8;background:none;-webkit-text-fill-color:#9fb3c8;margin-top:4px;font-weight:400;}
   .screen h2{font-size:clamp(1rem,3vw,1.5rem);color:#ffb648;margin:18px 0 12px;letter-spacing:2px;}
-  .ss-title{margin-bottom:6px;}
-  .ss-intro{max-width:560px;margin:0 auto;color:#9fb3c8;font-size:clamp(.82rem,1.6vw,.95rem);line-height:1.65;}
-  .ss-section-label{margin:20px auto 6px;font-size:.7rem;letter-spacing:3px;color:#6a7888;text-transform:uppercase;font-weight:bold;}
+  /* Cinematic start screen (.ss) — live 3D city renders behind the glass card */
+  .screen.ss{background:transparent;justify-content:center;padding:0;}
+  .ss-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,20,.35) 0%,rgba(8,12,20,.08) 45%,rgba(8,12,20,.75) 100%);overflow:hidden;pointer-events:none;}
+  .ss-bg::before{content:"";position:absolute;inset:-20%;
+    background:
+      radial-gradient(2px 2px at 20% 30%,#ffb64855,transparent 40%),
+      radial-gradient(2px 2px at 70% 60%,#6bb6ff55,transparent 40%),
+      radial-gradient(1px 1px at 40% 80%,#ff7e5f55,transparent 40%),
+      radial-gradient(2px 2px at 85% 20%,#ffd54a55,transparent 40%),
+      repeating-linear-gradient(90deg,transparent 0 60px,#13243a 60px 62px),
+      repeating-linear-gradient(0deg,transparent 0 60px,#13243a 60px 62px);
+    filter:blur(2px);animation:ssDrift 24s linear infinite;opacity:.6;}
+  .ss-bg::after{content:"";position:absolute;left:50%;top:120%;width:120vw;height:120vw;margin:-60vw 0 0 -60vw;
+    background:radial-gradient(circle,rgba(255,126,95,.18) 0%,transparent 55%);animation:ssPulse 6s ease-in-out infinite;}
+  @keyframes ssDrift{from{transform:translate(0,0)}to{transform:translate(-60px,-60px)}}
+  @keyframes ssPulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .ss-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 45%,transparent 40%,rgba(5,6,10,.85) 100%);}
+  .ss-scanlines{position:absolute;inset:0;pointer-events:none;opacity:.12;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0 1px,transparent 1px 3px);}
+  .ss-card{position:relative;z-index:2;width:min(620px,94vw);max-height:92vh;overflow-y:auto;
+    background:linear-gradient(180deg,rgba(16,24,40,.72),rgba(10,14,24,.78));
+    border:1px solid rgba(255,186,72,.22);border-radius:18px;padding:clamp(18px,4vw,30px);
+    box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;
+    animation:ssIn .6s cubic-bezier(.2,.8,.2,1) both;}
+  @keyframes ssIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+  .ss-badge{display:inline-block;font-size:.62rem;letter-spacing:3px;color:#ffb648;
+    border:1px solid rgba(255,186,72,.4);border-radius:20px;padding:4px 12px;margin-bottom:14px;
+    background:rgba(255,186,72,.08);text-transform:uppercase;font-weight:bold;}
+  .ss-logo{font-size:clamp(2.6rem,9vw,4.6rem)!important;letter-spacing:4px!important;margin:0 0 2px!important;
+    background:linear-gradient(90deg,#ffd54a,#ffb648 30%,#ff7e5f 60%,#ff5a5a)!important;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 18px rgba(255,126,95,.4));font-weight:900!important;line-height:1!important;}
+  .ss-accent{display:block;font-size:.30em!important;letter-spacing:10px!important;
+    color:#9fb3c8!important;-webkit-text-fill-color:#9fb3c8!important;background:none!important;margin-top:6px;font-weight:500!important;}
+  .ss-tagline{font-size:clamp(.9rem,2.4vw,1.2rem);letter-spacing:6px;color:#ff7e5f;font-weight:700;margin:6px 0 12px;text-transform:uppercase;}
+  .ss-intro{max-width:520px;margin:0 auto 16px;color:#b8c6d6;font-size:clamp(.82rem,1.6vw,.95rem);line-height:1.65;}
+  .ss-features{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 auto 18px;max-width:520px;}
+  .ss-feat{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border-radius:12px;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}
+  .ss-feat-ico{font-size:1.4rem;line-height:1;}
+  .ss-feat b{font-size:.78rem;color:#fff;letter-spacing:.5px;}
+  .ss-feat span{font-size:.64rem;color:#8a98a8;text-align:center;line-height:1.3;}
+  .ss-section-label{margin:14px auto 8px;font-size:.66rem;letter-spacing:3px;color:#6a7888;text-transform:uppercase;font-weight:bold;}
+  .ss-hint{font-size:clamp(.74rem,1.5vw,.82rem);color:#74809a;margin:14px auto 16px;max-width:480px;font-style:italic;}
+  .ss-cta{display:inline-flex;align-items:center;gap:12px;margin-top:6px;padding:15px 34px;font-size:1.1rem;font-weight:900;
+    color:#05060a;background:linear-gradient(90deg,#ffd54a,#ffb648,#ff7e5f);border:none;border-radius:34px;
+    box-shadow:0 10px 30px rgba(255,126,95,.5),inset 0 1px 0 rgba(255,255,255,.4);letter-spacing:2px;
+    transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden;}
+  .ss-cta:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(255,126,95,.6),inset 0 1px 0 rgba(255,255,255,.5);}
+  .ss-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-100%);animation:ssShine 3s ease-in-out infinite;}
+  @keyframes ssShine{0%,60%{transform:translateX(-100%)}80%,100%{transform:translateX(100%)}}
+  .ss-arrow{font-style:normal;transition:transform .2s;}
+  .ss-cta:hover .ss-arrow{transform:translateX(4px);}
   .heroPick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;width:100%;max-width:760px;margin:8px auto;}
   .heroCard{border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(10,16,28,.6);padding:14px 12px 16px;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;position:relative;overflow:hidden;text-align:center;}
   .heroCard:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.4);}
@@ -132,14 +183,16 @@
   #gameover h1{background:linear-gradient(90deg,#ff5a5a,#ff9a4a);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hint{font-size:clamp(.72rem,1.5vw,.8rem);color:#74809a;margin-top:14px;max-width:520px;}
 
-  /* Responsive: phones / portrait — hero cards stack two-up, keybind grid stays readable */
+  /* Responsive: phones / portrait — feature row wraps, keybind grid stays readable */
   @media (max-width:640px){
+    .ss-features{grid-template-columns:repeat(2,1fr);}
     .heroPick{grid-template-columns:repeat(2,1fr);gap:10px;}
     .heroCard{padding:12px 10px 14px;}
     .heroCard .icon{width:48px;height:48px;font-size:22px;}
     .heroCard .hn{font-size:15px;}
     .keysGrid{grid-template-columns:auto 1fr;gap:4px 10px;font-size:.72rem;}
     .keysGrid b{min-width:60px;font-size:.68rem;padding:2px 6px;}
+    .ss-card{border-radius:14px;}
   }
 
   /* Touch */
@@ -276,28 +329,44 @@
     </div>
   </div>
 
-  <!-- Start screen (you spawn as a civilian — no class/role picking) -->
-  <div id="heroSelect" class="screen" style="display:none;">
-    <div class="ss-title">
-      <h1>OVERWATCH<span class="sub">: PRIMARY</span></h1>
-      <h2>YOU START WITH NOTHING</h2>
+  <!-- Start screen (cinematic — you spawn as a civilian, no class picking) -->
+  <div id="heroSelect" class="screen ss" style="display:none;">
+    <!-- live blurred city backdrop -->
+    <div class="ss-bg"></div>
+    <div class="ss-vignette"></div>
+    <div class="ss-scanlines"></div>
+
+    <div class="ss-card">
+      <div class="ss-badge">FREE ROAM · SAN ANDREAS-STYLE</div>
+      <h1 class="ss-logo">OVERWATCH<span class="ss-accent">: PRIMARY</span></h1>
+      <div class="ss-tagline">YOU START WITH NOTHING</div>
+
+      <p class="ss-intro">
+        No weapons. No abilities. No money. Just you, the streets, and whatever you can take.
+        Find guns on the ground, hold up stores for cash, outrun the cops — or don't.
+      </p>
+
+      <div class="ss-features">
+        <div class="ss-feat"><div class="ss-feat-ico">🔫</div><div><b>Scavenge</b><span>Pick up guns off the ground</span></div></div>
+        <div class="ss-feat"><div class="ss-feat-ico">💰</div><div><b>Hold Up</b><span>Rob stores for quick cash</span></div></div>
+        <div class="ss-feat"><div class="ss-feat-ico">🚓</div><div><b>Wanted</b><span>Outrun a 5-star manhunt</span></div></div>
+        <div class="ss-feat"><div class="ss-feat-ico">🚗</div><div><b>Drive</b><span>Jack any car on the street</span></div></div>
+      </div>
+
+      <div class="ss-section-label">CONTROLS</div>
+      <div class="keysGrid">
+        <b>W A S D</b><span>Move · <b>Shift</b> Sprint · <b>Space</b> Jump</span>
+        <b>Mouse</b><span>Aim · <b>Click</b> Attack / Fire · <b>R-Click</b> Aim</span>
+        <b>F</b><span>Enter / exit vehicle</span>
+        <b>H</b><span>Hold up the store you're aiming at (needs a weapon)</span>
+        <b>R</b><span>Reload (or cycle the radio in a car)</span>
+        <b>B</b><span>Buy menu (Ammo · Armor · Guns)</span>
+        <b>P</b><span>Photo mode · <b>F12</b> Admin</span>
+      </div>
+
+      <div class="ss-hint">You're a civilian with empty pockets. Nobody's coming to save you. Make something happen.</div>
+      <button class="btn ss-cta" id="startBtn"><span>TAKE TO THE STREETS</span><i class="ss-arrow">→</i></button>
     </div>
-    <div class="ss-intro">
-      No weapons. No abilities. No money. Just you, the streets, and whatever you can take.
-      Find guns on the ground, hold up stores for cash, outrun the cops — or don't.
-    </div>
-    <div class="ss-section-label">CONTROLS</div>
-    <div class="keysGrid">
-      <b>W A S D</b><span>Move · <b>Shift</b> Sprint · <b>Space</b> Jump</span>
-      <b>Mouse</b><span>Aim · <b>Click</b> Attack / Fire · <b>R-Click</b> Aim</span>
-      <b>F</b><span>Enter / exit vehicle</span>
-      <b>H</b><span>Hold up the store you're aiming at (needs a weapon)</span>
-      <b>R</b><span>Reload (or radio in a car)</span>
-      <b>B</b><span>Buy menu (Ammo · Armor · Guns)</span>
-      <b>P</b><span>Photo mode · <b>F12</b> Admin</span>
-    </div>
-    <div class="hint">You're a civilian with empty pockets. Nobody's coming to save you. Make something happen.</div>
-    <button class="btn" id="startBtn">TAKE TO THE STREETS</button>
   </div>
 
   <!-- Game over -->
@@ -640,6 +709,7 @@ function sndAbility(){ beep(440,0.1,'sine',0.05); beep(660,0.12,'sine',0.05); }
 function sndUlt(){ for(const f of [300,500,800,1200]) setTimeout(()=>beep(f,0.18,'sawtooth',0.08),[0,80,160,240][[300,500,800,1200].indexOf(f)]); }
 function sndPickup(){ beep(880,0.06,'sine',0.05); setTimeout(()=>beep(1320,0.08,'sine',0.05),60); }
 function sndKill(){ beep(1200,0.05,'square',0.04,-400); }
+function sndSiren(){ beep(880,0.3,'sine',0.05,120); setTimeout(()=>beep(660,0.3,'sine',0.05,-120),320); }
 function sndStep(){ if(!audioCtx) return; noise(0.05,0.03,500); }
 
 /* ---------- City ---------- */
@@ -1007,13 +1077,13 @@ function buildPlayerMesh(){
   const gunBarrel=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.045,0.42,8), new THREE.MeshStandardMaterial({color:0x1a1a20,metalness:.7})); gunBarrel.rotation.x=Math.PI/2; gunBarrel.position.set(0,0.03,0.42); gun.add(gunBarrel);
   const gunGrip=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.16,0.10), new THREE.MeshStandardMaterial({color:0x14141a,roughness:.6})); gunGrip.position.set(0,-0.12,0.0); gun.add(gunGrip);
   gun.position.set(0,-0.28,0.32); gun.visible=false; R.elbow.add(gun);
-  // LEGS — hip pivot with a shin/knee sub-group
+  // LEGS — hip pivot at the pelvis (matches the upper-body waist height) with a shin/knee sub-group
   function makeLeg(side){
-    const hip=new THREE.Group(); hip.position.set(side*0.16,-0.02,0); g.add(hip);
-    const thigh=new THREE.Mesh(capsule(0.13,0.30), pantsMat); thigh.position.y=-0.17; thigh.castShadow=true; hip.add(thigh);
-    const knee=new THREE.Group(); knee.position.y=-0.34; hip.add(knee);
-    const shin=new THREE.Mesh(capsule(0.11,0.28), pantsMat); shin.position.y=-0.15; shin.castShadow=true; knee.add(shin);
-    const shoe=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.10,0.34), shoeMat); shoe.position.set(0,-0.30,0.06); shoe.castShadow=true; knee.add(shoe);
+    const hip=new THREE.Group(); hip.position.set(side*0.15,0.92,0); g.add(hip);
+    const thigh=new THREE.Mesh(capsule(0.14,0.40), pantsMat); thigh.position.y=-0.22; thigh.castShadow=true; hip.add(thigh);
+    const knee=new THREE.Group(); knee.position.y=-0.44; hip.add(knee);
+    const shin=new THREE.Mesh(capsule(0.12,0.38), pantsMat); shin.position.y=-0.21; shin.castShadow=true; knee.add(shin);
+    const shoe=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.10,0.34), shoeMat); shoe.position.set(0,-0.42,0.06); shoe.castShadow=true; knee.add(shoe);
     return {hip,knee};
   }
   const LL=makeLeg(-1), RR=makeLeg(1);
@@ -1178,11 +1248,17 @@ function updatePed(p,dt){
   if(!blockedAt(nx,p.z,p.r)) p.x=nx; else p.angle+=Math.PI/2;
   if(!blockedAt(p.x,nz,p.r)) p.z=nz; else p.angle-=Math.PI/2;
   p.x=clamp(p.x,-HALF+1,HALF-1); p.z=clamp(p.z,-HALF+1,HALF-1);
-  // animate limbs
+  // animate limbs — smooth swing + slight body bob so they read as walking, not sliding
   p.walkPhase+=dt*(p.speed>2.5?14:8);
   const sw=Math.sin(p.walkPhase)*0.5;
-  if(p.parts.lLeg){ p.parts.lLeg.rotation.x=sw; p.parts.rLeg.rotation.x=-sw; p.parts.lArm.rotation.x=-sw*0.6; p.parts.rArm.rotation.x=sw*0.6; }
-  p.mesh.position.set(p.x,0,p.z); p.mesh.rotation.y=p.angle;
+  const L=Math.abs(Math.sin(p.walkPhase))*0.04;
+  if(p.parts.lLeg){
+    p.parts.lLeg.rotation.x=lerp(p.parts.lLeg.rotation.x, sw, 0.4);
+    p.parts.rLeg.rotation.x=lerp(p.parts.rLeg.rotation.x, -sw, 0.4);
+    p.parts.lArm.rotation.x=lerp(p.parts.lArm.rotation.x, -sw*0.6, 0.4);
+    p.parts.rArm.rotation.x=lerp(p.parts.rArm.rotation.x, sw*0.6, 0.4);
+  }
+  p.mesh.position.set(p.x,L,p.z); p.mesh.rotation.y=p.angle;
 }
 function hitPed(p,dmg){
   if(p.dead) return;
@@ -1190,8 +1266,8 @@ function hitPed(p,dmg){
   if(p.hp<=0){ p.dead=true; p.deadT=4; bloodBurst(p.x,1,p.z); G.score+=5; showDamageNum(p.x,1.5,p.z,5,false); }
 }
 function updatePeds(dt){
-  // maintain population
-  while(G.peds.length<40){ const p=pointFarFromPlayer(20,HALF-10); G.peds.push(makePed(p.x,p.z)); }
+  // maintain population — a busier, more alive city
+  while(G.peds.length<60){ const p=pointFarFromPlayer(18,HALF-10); G.peds.push(makePed(p.x,p.z)); }
   for(let i=G.peds.length-1;i>=0;i--){
     const p=G.peds[i];
     updatePed(p,dt);
@@ -1206,7 +1282,7 @@ const gangColors=[0x5a2a2a,0x2a2a5a,0x3a3a3a];
 function makeGang(x,z){
   // a hostile that's already "alerted" and opens fire the moment it sees the player
   const h=makeHostile(x,z,'grunt');
-  h.kind='gang'; h.name='GANG'; h.alertT=999; h.speed=3.6; h.fireRate=0.55; h.dmg=11; h.range=60; h.score=120;
+  h.kind='gang'; h.name='GANG'; h.alertT=999; h.speed=3.6; h.fireRate=0.55; h.dmg=5; h.range=60; h.score=120;
   if(h.mesh){ h.mesh.children[0].material.color.setHex(pick(gangColors)); }
   // bandana / colors marker
   const band=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.06,0.3), new THREE.MeshStandardMaterial({color:0xc01030,emissive:0x400810,emissiveIntensity:0.3})); band.position.y=1.62; h.mesh.add(band);
@@ -1227,7 +1303,7 @@ function updateGangs(dt){
 /* ---------- Hostiles ---------- */
 function makeHostile(x,z,kind='grunt'){
   const h={x,z,vx:0,vz:0,r:0.45,angle:rand(0,TAU),hp:kind==='heavy'?140:kind=='sniper'?60:80,maxHp:kind==='heavy'?140:kind=='sniper'?60:80,kind,
-    speed:kind==='heavy'?2.6:kind=='sniper'?3.4:4,fireCool:rand(0.5,1.5),fireRate:kind==='heavy'?0.7:kind=='sniper'?1.8:0.4,dmg:kind==='heavy'?18:kind=='sniper'?30:9,range:kind=='sniper'?140:70,
+    speed:kind==='heavy'?2.6:kind=='sniper'?3.4:4,fireCool:rand(0.5,1.5),fireRate:kind==='heavy'?0.7:kind=='sniper'?1.8:0.4,dmg:kind==='heavy'?7:kind=='sniper'?6:4,range:kind=='sniper'?140:70,
     state:'advance',t:0,coverT:0,score:kind==='heavy'?150:kind=='sniper'?120:80,mesh:null,dead:false,deadT:0,alertT:0};
   const g=new THREE.Group();
   const col=kind==='heavy'?0x7a2a2a:kind=='sniper'?0x4a2a7a:0x7a4a2a;
@@ -1288,6 +1364,18 @@ function explode(x,z,radius,dmg,fromPlayer){
   if((player.x-x)**2+(player.z-z)**2<radius*radius) damagePlayer(dmg*(fromPlayer?0.3:1));
   for(const p of G.peds) if(!p.dead && (p.x-x)**2+(p.z-z)**2<radius*radius) hitPed(p,dmg*0.6);
   for(const c of G.cars) if(!c._burning && (c.x-x)**2+(c.z-z)**2<radius*radius){ c._burning=true; setTimeout(()=>explodeCar(c),1500); }
+}
+function explodeCar(c){
+  if(!c||!c.mesh) return;
+  c._burning=false;
+  // blow the car up — fireball, damage around, wreck the car
+  explode(c.x,c.z,6,60,false);
+  c.hp=0; c.dead=true; c.occupied=false;
+  if(c.tlMat) c.tlMat.emissiveIntensity=1.5;
+  // tilt the wreck + sink slightly so it reads as destroyed
+  c.mesh.rotation.z=Math.PI/2*0.5; c.mesh.position.y=0.3;
+  addFire(c.x,c.z);
+  G.shake=Math.max(G.shake,0.5);
 }
 
 /* ---------- Particles ---------- */
@@ -1400,17 +1488,19 @@ function punch(){
 }
 function fireTank(){
   if(player.fireCool>0||!player.inCar||player.inCar.type!=='tank') return;
-  player.fireCool=1.2;
+  player.fireCool=0.7;
   const c=player.inCar;
   const dir=getAimDir();
   const turretYaw=Math.atan2(dir.z,dir.x);
   // fire from the barrel tip
   const bx=c.x+Math.cos(turretYaw)*4, bz=c.z+Math.sin(turretYaw)*4;
-  fireBullet(bx,2.4,bz,{x:dir.x,y:0,z:dir.z},true,200,160,0xff7a3a,0.0,true);
+  sparkBurst(bx,2.6,bz,0xffc060,16);        // big muzzle flash
+  fireBullet(bx,2.4,bz,{x:dir.x,y:0,z:dir.z},true,220,180,0xff7a3a,0.0,true);
   explode(bx,bz,7,70,true); G.shake=1.2; sndCannon();
-  // recoil — hull kicks back
+  // recoil — hull kicks back + turret lifts briefly
   c.vx-=Math.cos(turretYaw)*4; c.vz-=Math.sin(turretYaw)*4;
-  adminNotice('TANK fired');
+  if(c.turret) c.turret.rotation.x=-0.18, setTimeout(()=>{ if(c.turret) c.turret.rotation.x=0; },120);
+  notice('💥 CANNON');
 }
 function fireWeapon(){
   if(player.inCar){ if(player.inCar.type==='tank') fireTank(); return; }
@@ -1552,19 +1642,24 @@ function updateWaves(dt){
   for(let i=G.hostiles.length-1;i>=0;i--){ const h=G.hostiles[i]; if(h.dead){ h.deadT+=dt; if(h.deadT>4){ scene.remove(h.mesh); G.hostiles.splice(i,1); } } }
   if(!G.mission) return;
   G.waveT-=dt;
-  if(G.waveT<=0 && G.hostiles.filter(h=>!h.dead).length<6){
+  if(G.waveT<=0 && G.hostiles.filter(h=>!h.dead).length<3){
     spawnWave();
-    G.waveT=8;
+    G.waveT=14; // longer gap between waves so you can breathe / loot between fights
   }
 }
 function spawnWave(){
-  const n=2+G.waveNum; G.waveNum++;
+  // hard cap of 3 active street shooters so you never get swarmed / spawn-killed
+  const aliveCount=G.hostiles.filter(h=>!h.dead).length;
+  const cap=3;
+  if(aliveCount>=cap){ notice('Streets are already hot — deal with the '+aliveCount+' on you first'); return; }
+  let n=Math.min(cap-aliveCount, 1+Math.floor(G.waveNum/2));
+  G.waveNum++;
   for(let i=0;i<n;i++){
-    const p=pointFarFromPlayer(40,90);
+    const p=pointFarFromPlayer(45,95); // always spawn far away — never on top of the player
     const kind=Math.random()<0.2?'heavy':Math.random()<0.3?'sniper':'grunt';
     G.hostiles.push(makeHostile(p.x,p.z,kind));
   }
-  notice('Rival gang rolling up on you ('+n+')');
+  if(n>0) notice('Rival gang rolling up on you ('+n+')');
 }
 
 /* ---------- Pickups ---------- */
@@ -1765,12 +1860,18 @@ function update(dt){
       const amp=clamp(sp*0.09,0,0.85);
       const sw=Math.sin(player.walkPhase)*amp;
       const swC=Math.cos(player.walkPhase)*amp; // bent-knee phase, peaks mid-stride
-      if(P.lLeg){ P.lLeg.rotation.x=sw; P.rLeg.rotation.x=-sw; }
+      if(P.lLeg){ P.lLeg.rotation.x=lerp(P.lLeg.rotation.x, sw, 0.35); P.rLeg.rotation.x=lerp(P.rLeg.rotation.x, -sw, 0.35); }
       // bend knees so the leg that's lifting forward tucks, the planted one straightens
       if(P.lKnee){ P.lKnee.rotation.x=lerp(P.lKnee.rotation.x, Math.max(0, sw*0.9+0.15), 0.3); P.rKnee.rotation.x=lerp(P.rKnee.rotation.x, Math.max(0, -sw*0.9+0.15), 0.3); }
-      // idle breathing when standing still
-      if(sp<0.3){ const breathe=Math.sin(G.time*1.6)*0.03; if(P.upper) P.upper.position.y=0.95+breathe; }
-      else if(P.upper){ P.upper.position.y=lerp(P.upper.position.y,0.95,0.1); }
+      // idle breathing + weight shift when standing still; hips bob up/down when walking
+      if(sp<0.3){
+        const breathe=Math.sin(G.time*1.6)*0.03;
+        if(P.upper){ P.upper.position.y=0.95+breathe; P.upper.rotation.z=lerp(P.upper.rotation.z||0, breathe*0.6, 0.1); }
+        if(P.head){ P.head.rotation.y=lerp(P.head.rotation.y||0, Math.sin(G.time*0.6)*0.18, 0.05); } // idle look-around
+      } else {
+        if(P.upper){ P.upper.position.y=lerp(P.upper.position.y,0.95+Math.abs(Math.sin(player.walkPhase))*0.03, 0.2); P.upper.rotation.z=lerp(P.upper.rotation.z||0,0,0.1); }
+        if(P.head){ P.head.rotation.y=lerp(P.head.rotation.y||0,0,0.1); }
+      }
       // arms: left arm swings opposite to legs; right arm holds the gun forward when armed
       if(P.lArm && P.rArm){
         P.lArm.rotation.x=lerp(P.lArm.rotation.x, -sw*0.7, 0.3);
@@ -1800,6 +1901,7 @@ function update(dt){
   updateMotes(dt);
   updatePeds(dt);
   updateGangs(dt);
+  updateTraffic(dt);
   updateRain(dt);
   updateStores(dt);
   updateHelis(dt);
@@ -1963,7 +2065,7 @@ function spawnCopWave(stars){
   }
 }
 function makeCop(x,z){
-  const c={x,z,vx:0,vz:0,r:0.45,angle:rand(0,TAU),speed:6.0,hp:80,maxHp:80,fireCool:rand(0.5,1.5),fireRate:0.5,dmg:8,range:60,kind:'cop',dead:false,deadT:0,mesh:null,parts:{}};
+  const c={x,z,vx:0,vz:0,r:0.45,angle:rand(0,TAU),speed:6.0,hp:80,maxHp:80,fireCool:rand(0.5,1.5),fireRate:0.5,dmg:5,range:60,kind:'cop',dead:false,deadT:0,mesh:null,parts:{}};
   const g=new THREE.Group();
   const body=new THREE.Mesh(capsule(0.3,0.6), new THREE.MeshStandardMaterial({color:0x2a3a5a,roughness:.6})); body.position.y=0.9; body.castShadow=true; g.add(body);
   const head=new THREE.Mesh(new THREE.SphereGeometry(0.22,10,8), new THREE.MeshStandardMaterial({color:0xd0a878,roughness:.7})); head.position.y=1.45; head.castShadow=true; g.add(head);
@@ -2303,7 +2405,9 @@ function drawMinimap(){
 }
 
 /* ---------- Main loop ---------- */
-function loop(){ requestAnimationFrame(loop); const dt=Math.min(0.05,clock.getDelta()); if(G.running&&!G.over) update(dt); if(renderer) renderWithBloom(); if(G.running) drawMinimap(); }
+let cinematicT=0;
+function loop(){ requestAnimationFrame(loop); const dt=Math.min(0.05,clock.getDelta()); if(G.running&&!G.over) update(dt); else { cinematicT+=dt*0.08; if(camera&&scene){ // slow cinematic orbit around the city for the start / game-over screens
+  const r=46, h=20; camera.position.set(Math.cos(cinematicT)*r, h+Math.sin(cinematicT*0.6)*4, Math.sin(cinematicT)*r); camera.lookAt(0,8,0); } } if(renderer) renderWithBloom(); if(G.running) drawMinimap(); }
 
 /* ---------- Switch hero at spawn ---------- */
 function switchHeroAtSpawn(i){ if(!G.running||G.over||G.elim>0) return; if(i===G.heroIdx) return; selectHero(i); resetPlayer(); }
@@ -2317,14 +2421,38 @@ function resetPlayer(){ player.x=ROAD0; player.z=ROAD0; player.vx=0; player.vz=0
 
 /* ---------- Spawn world ---------- */
 function spawnWorld(){
-  const types=['sedan','sedan','sports','truck','sedan','sports'];
-  for(let i=0;i<20;i++){ const p=pointFarFromPlayer(30,HALF-10); const c=makeCar(p.x,p.z,Math.random()*TAU,pick(carColors),pick(types)); c.occupied=Math.random()<0.5; G.cars.push(c); }
-  for(let i=0;i<8;i++){ const p=pointNearPlayer(8,30); spawnPickup(p.x,p.z,pick(['health','armor','ammo'])); }
+  const types=['sedan','sedan','sports','truck','sedan','sports','sedan','truck'];
+  for(let i=0;i<30;i++){ const p=pointFarFromPlayer(30,HALF-10); const c=makeCar(p.x,p.z,Math.random()*TAU,pick(carColors),pick(types)); c.occupied=Math.random()<0.5; G.cars.push(c); }
+  for(let i=0;i<10;i++){ const p=pointNearPlayer(8,32); spawnPickup(p.x,p.z,pick(['health','armor','ammo'])); }
   // weapon pickups scattered around the city — find them to arm yourself
-  const wkeys=['pistol','pistol','smg','shotgun','rifle','sniper','pistol','smg'];
+  const wkeys=['pistol','pistol','smg','shotgun','rifle','sniper','pistol','smg','pistol','rifle'];
   for(const wk of wkeys){ const p=pointFarFromPlayer(15,HALF-12); spawnWeaponPickup(p.x,p.z,wk); }
   // hold-up stores
-  for(let i=0;i<6;i++){ const p=pointFarFromPlayer(20,HALF-15); addStore(p.x,p.z); }
+  for(let i=0;i<7;i++){ const p=pointFarFromPlayer(20,HALF-15); addStore(p.x,p.z); }
+  G.trafficT=0; G.eventT=10; // ambient traffic + world-event timers
+}
+
+// keep traffic flowing — spawn fresh cars off-screen so the streets never empty
+function updateTraffic(dt){
+  G.trafficT=(G.trafficT||0)-dt;
+  if(G.trafficT<=0){
+    G.trafficT=2.5;
+    const liveTraffic=G.cars.filter(c=>!c.isPlayer&&!c.occupied===false).length;
+    if(G.cars.filter(c=>!c.isPlayer).length<38){
+      const p=pointFarFromPlayer(45,HALF-8);
+      const c=makeCar(p.x,p.z,Math.random()*TAU,pick(carColors),pick(['sedan','sports','truck','sedan']));
+      c.occupied=Math.random()<0.45; G.cars.push(c);
+    }
+  }
+  // ambient world events — distant sirens, the occasional distant explosion, a mugging in progress
+  G.eventT=(G.eventT||10)-dt;
+  if(G.eventT<=0){
+    G.eventT=rand(18,34);
+    const ev=pick(['siren','explosion','mugging','nothing','nothing']);
+    if(ev==='siren'){ sndSiren&&sndSiren(); notice('🚓 Sirens in the distance…'); }
+    else if(ev==='explosion'){ const p=pointFarFromPlayer(40,80); explode(p.x,p.z,6,60,true); G.shake=Math.max(G.shake,0.15); notice('💥 An explosion echoes across the city'); }
+    else if(ev==='mugging'){ const p=pointNearPlayer(30,70); if(G.peds.length){ const v=G.peds[Math.floor(Math.random()*G.peds.length)]; v.fleeT=5; v.state='flee'; v.speed=4.2; notice('😱 Screams nearby — someone is in trouble'); } }
+  }
 }
 
 /* ---------- Start UI (you spawn as a civilian — no hero/role picking) ---------- */
