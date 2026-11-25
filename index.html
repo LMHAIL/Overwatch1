@@ -103,29 +103,44 @@
   #notice.show{opacity:1;}
 
   /* Hero select screen */
-  .screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 30%,#16243f,#05060a 70%);text-align:center;padding:20px;overflow-y:auto;}
-  .screen h1{font-size:clamp(2.4rem,8vw,5rem);letter-spacing:6px;background:linear-gradient(90deg,#ffb648,#ff7e5f,#ff5a5a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 40px rgba(255,126,95,.3);margin-bottom:2px;font-weight:900;}
+  .screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 30%,#16243f,#05060a 70%);text-align:center;padding:24px 16px;overflow-y:auto;}
+  .screen h1{font-size:clamp(2.4rem,8vw,5rem);letter-spacing:6px;background:linear-gradient(90deg,#ffb648,#ff7e5f,#ff5a5a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 40px rgba(255,126,95,.3);margin-bottom:2px;font-weight:900;line-height:1.05;}
   .screen h1 .sub{display:block;font-size:.28em;letter-spacing:14px;color:#9fb3c8;background:none;-webkit-text-fill-color:#9fb3c8;margin-top:4px;font-weight:400;}
   .screen h2{font-size:clamp(1rem,3vw,1.5rem);color:#ffb648;margin:18px 0 12px;letter-spacing:2px;}
-  .heroPick{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:14px 0;}
-  .heroCard{width:220px;border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(10,16,28,.6);padding:16px;cursor:pointer;transition:transform .15s,border-color .15s;position:relative;overflow:hidden;}
-  .heroCard:hover{transform:translateY(-6px);border-color:var(--accent);}
-  .heroCard .icon{width:64px;height:64px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;background:var(--accent);color:#05060a;box-shadow:0 0 24px var(--accent);}
-  .heroCard .hn{font-size:20px;font-weight:bold;letter-spacing:1px;}
-  .heroCard .hr{font-size:11px;color:#9fb3c8;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-  .heroCard .hw{font-size:13px;color:#fff;margin:6px 0;}
-  .heroCard .habil{font-size:11px;color:#9fb3c8;text-align:left;line-height:1.6;margin-top:8px;}
+  .ss-title{margin-bottom:6px;}
+  .ss-intro{max-width:560px;margin:0 auto;color:#9fb3c8;font-size:clamp(.82rem,1.6vw,.95rem);line-height:1.65;}
+  .ss-section-label{margin:20px auto 6px;font-size:.7rem;letter-spacing:3px;color:#6a7888;text-transform:uppercase;font-weight:bold;}
+  .heroPick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;width:100%;max-width:760px;margin:8px auto;}
+  .heroCard{border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(10,16,28,.6);padding:14px 12px 16px;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;position:relative;overflow:hidden;text-align:center;}
+  .heroCard:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .heroCard.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent),0 8px 28px var(--accent);}
+  .heroCard .icon{width:54px;height:54px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:bold;background:var(--accent);color:#05060a;box-shadow:0 0 20px var(--accent);}
+  .heroCard .hn{font-size:17px;font-weight:bold;letter-spacing:1px;}
+  .heroCard .hr{font-size:10px;color:#9fb3c8;letter-spacing:2px;text-transform:uppercase;margin:2px 0 8px;}
+  .heroCard .hw{font-size:12px;color:#fff;margin:4px 0;}
+  .heroCard .habil{font-size:10.5px;color:#9fb3c8;text-align:left;line-height:1.55;margin-top:8px;}
   .heroCard .habil b{color:var(--accent);}
-  .btn{pointer-events:auto;cursor:pointer;margin-top:10px;padding:13px 40px;font-size:1.05rem;font-weight:bold;color:#05060a;background:linear-gradient(90deg,#ffb648,#ff7e5f);border:none;border-radius:30px;box-shadow:0 6px 20px rgba(255,126,95,.45);transition:transform .1s;letter-spacing:2px;}
+  .btn{pointer-events:auto;cursor:pointer;margin-top:18px;padding:13px 40px;font-size:1.05rem;font-weight:bold;color:#05060a;background:linear-gradient(90deg,#ffb648,#ff7e5f);border:none;border-radius:30px;box-shadow:0 6px 20px rgba(255,126,95,.45);transition:transform .1s;letter-spacing:2px;}
   .btn:active{transform:scale(.96);}
-  .keysGrid{display:grid;grid-template-columns:auto 1fr;gap:5px 16px;max-width:520px;margin:14px auto;text-align:left;font-size:.85rem;color:#d0d8e4;}
-  .keysGrid b{display:inline-block;min-width:78px;padding:2px 8px;background:#1a2640;border:1px solid #3a4a6a;border-radius:5px;text-align:center;color:#fff;font-size:.78rem;}
+  .keysGrid{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;max-width:520px;width:100%;margin:10px auto;text-align:left;font-size:clamp(.72rem,1.5vw,.85rem);color:#d0d8e4;}
+  .keysGrid b{display:inline-block;min-width:72px;padding:2px 8px;background:#1a2640;border:1px solid #3a4a6a;border-radius:5px;text-align:center;color:#fff;font-size:.74rem;}
+  .keysGrid span{word-break:break-word;}
   #loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#05060a;z-index:50;}
   #loading .bar{width:260px;height:8px;background:#1a2640;border-radius:4px;overflow:hidden;margin-top:14px;}
   #loading .fill{height:100%;width:0;background:linear-gradient(90deg,#ffb648,#ff5a5a);transition:width .3s;}
   #gameover{display:none;}
   #gameover h1{background:linear-gradient(90deg,#ff5a5a,#ff9a4a);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hint{font-size:.8rem;color:#74809a;margin-top:14px;}
+  .hint{font-size:clamp(.72rem,1.5vw,.8rem);color:#74809a;margin-top:14px;max-width:520px;}
+
+  /* Responsive: phones / portrait — hero cards stack two-up, keybind grid stays readable */
+  @media (max-width:640px){
+    .heroPick{grid-template-columns:repeat(2,1fr);gap:10px;}
+    .heroCard{padding:12px 10px 14px;}
+    .heroCard .icon{width:48px;height:48px;font-size:22px;}
+    .heroCard .hn{font-size:15px;}
+    .keysGrid{grid-template-columns:auto 1fr;gap:4px 10px;font-size:.72rem;}
+    .keysGrid b{min-width:60px;font-size:.68rem;padding:2px 6px;}
+  }
 
   /* Touch */
   #touch{position:absolute;inset:0;pointer-events:none;display:none;}
@@ -208,7 +223,7 @@
     <div id="topLeft">
       <div id="scoreCard" class="panel"><div class="label">SCORE</div><div class="val" id="scoreVal">0</div><div class="sub" id="scoreSub">Eliminations: 0</div></div>
       <div id="moneyCard" class="panel"><div class="label">CASH</div><div class="val" id="moneyVal" style="color:#5dff8a;">$0</div><div class="sub" id="moneySub">Broke</div></div>
-      <div id="missionCard" class="panel"><div class="mt" id="mt">MISSION</div><div class="md" id="md">Eliminate the hostile cells</div><div class="mp" id="mp">0 / 5</div></div>
+      <div id="missionCard" class="panel"><div class="mt" id="mt">FREE ROAM</div><div class="md" id="md">The city is yours — take it, or burn it.</div><div class="mp" id="mp"></div></div>
     </div>
     <div id="threat"><div class="tlabel">WANTED</div><div id="threatStars"></div></div>
     <div id="minimap"><canvas id="mini" width="340" height="340"></canvas></div>
@@ -224,9 +239,23 @@
     </div>
 
     <div id="abilities">
-      <div class="ability" id="abUlt"><div class="cdFill"></div><div class="key">Q</div><div class="info"><div class="n" id="ultName">ULTIMATE</div><div class="d" id="ultDesc">Charged ability</div></div></div>
-      <div class="ability" id="ab2"><div class="cdFill"></div><div class="key">E</div><div class="info"><div class="n" id="ab2Name">Ability</div><div class="d" id="ab2Desc"></div></div></div>
-      <div class="ability" id="ab1"><div class="cdFill"></div><div class="key">L-SHIFT</div><div class="info"><div class="n" id="ab1Name">Ability</div><div class="d" id="ab1Desc"></div></div></div>
+      <div class="ability" id="abUlt"><div class="cdFill"></div><div class="key">X</div><div class="info"><div class="n" id="ultName">ULTIMATE</div><div class="d" id="ultDesc">Charged ability</div></div></div>
+      <div class="ability" id="ab2"><div class="cdFill"></div><div class="key">Q</div><div class="info"><div class="n" id="ab2Name">Ability</div><div class="d" id="ab2Desc"></div></div></div>
+      <div class="ability" id="ab1"><div class="cdFill"></div><div class="key">E</div><div class="info"><div class="n" id="ab1Name">Ability</div><div class="d" id="ab1Desc"></div></div></div>
+    </div>
+
+    <div id="vehHUD" class="panel" style="display:none;position:absolute;left:50%;bottom:120px;transform:translateX(-50%);padding:6px 14px;text-align:center;min-width:260px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <div style="text-align:left;">
+          <div style="font-size:0.65rem;color:#8a98a8;letter-spacing:0.1em;">FUEL</div>
+          <div class="barWrap" style="width:90px;height:8px;margin-top:2px;"><div class="barFill" id="vehFuel" style="background:linear-gradient(90deg,#5dff8a,#c8e060);width:100%;"></div></div>
+        </div>
+        <div style="text-align:left;">
+          <div style="font-size:0.65rem;color:#8a98a8;letter-spacing:0.1em;">VEHICLE HP</div>
+          <div class="barWrap" style="width:90px;height:8px;margin-top:2px;"><div class="barFill" id="vehHP" style="background:linear-gradient(90deg,#5a8aff,#9ab0e0);width:100%;"></div></div>
+        </div>
+        <div id="vehRadio" style="font-size:0.7rem;color:#5dff8a;font-weight:bold;letter-spacing:0.05em;white-space:nowrap;">♪ — OFF</div>
+      </div>
     </div>
 
     <div id="killfeed"></div>
@@ -240,37 +269,41 @@
     <div id="abtns">
       <div class="ab" id="btnUlt" style="grid-column:2">ULT</div>
       <div class="ab" id="btnAb2" style="grid-column:2">E</div>
-      <div class="ab" id="btnAb1">SHIFT</div>
+      <div class="ab" id="btnAb1">E</div>
       <div class="ab" id="btnAim">AIM</div>
       <div class="ab" id="btnFire">FIRE</div>
       <div style="display:flex;gap:8px;"><div class="ab" id="btnJump">JMP</div><div class="ab" id="btnEnter">USE</div></div>
     </div>
   </div>
 
-  <!-- Start screen (no class/role selection — you start as a nobody) -->
+  <!-- Start screen (you spawn as a civilian — no class/role picking) -->
   <div id="heroSelect" class="screen" style="display:none;">
-    <h1>OVERWATCH<span class="sub">: PRIMARY</span></h1>
-    <h2>YOU START WITH NOTHING</h2>
-    <div style="max-width:560px;margin:0 auto 10px;color:#9fb3c8;font-size:.92rem;line-height:1.6;">
-      No weapons. No abilities. No money. Just you, the streets, and whatever you can take.<br>
+    <div class="ss-title">
+      <h1>OVERWATCH<span class="sub">: PRIMARY</span></h1>
+      <h2>YOU START WITH NOTHING</h2>
+    </div>
+    <div class="ss-intro">
+      No weapons. No abilities. No money. Just you, the streets, and whatever you can take.
       Find guns on the ground, hold up stores for cash, outrun the cops — or don't.
     </div>
+    <div class="ss-section-label">CONTROLS</div>
     <div class="keysGrid">
       <b>W A S D</b><span>Move · <b>Shift</b> Sprint · <b>Space</b> Jump</span>
       <b>Mouse</b><span>Aim · <b>Click</b> Attack / Fire · <b>R-Click</b> Aim</span>
       <b>F</b><span>Enter / exit vehicle</span>
-      <b>R</b><span>Reload (when you have a gun)</span>
-      <b>H</b><span>Hold up the store you're aiming at</span>
-      <b>P</b><span>Photo mode</span>
+      <b>H</b><span>Hold up the store you're aiming at (needs a weapon)</span>
+      <b>R</b><span>Reload (or radio in a car)</span>
+      <b>B</b><span>Buy menu (Ammo · Armor · Guns)</span>
+      <b>P</b><span>Photo mode · <b>F12</b> Admin</span>
     </div>
-    <div class="hint">You're a civilian with empty pockets. The city doesn't care. Make something happen.</div>
-    <button class="btn" id="startBtn" style="margin-top:16px;">TAKE TO THE STREETS</button>
+    <div class="hint">You're a civilian with empty pockets. Nobody's coming to save you. Make something happen.</div>
+    <button class="btn" id="startBtn">TAKE TO THE STREETS</button>
   </div>
 
   <!-- Game over -->
   <div id="gameover" class="screen">
-    <h1>ELIMINATED</h1>
-    <h2 id="goSub">You have fallen</h2>
+    <h1>BUSTED</h1>
+    <h2 id="goSub">The streets took everything you had</h2>
     <div id="goStats" style="color:#d0d8e4;margin-bottom:18px;font-size:1rem;">Score: 0</div>
     <button class="btn" id="respawnBtn">RESPAWN</button>
   </div>
@@ -278,6 +311,17 @@
   <!-- Admin console + extra overlays -->
   <div id="bossBar"><div class="bn" id="bossName">BOSS</div><div id="bossBarWrap"><div id="bossBarFill"></div></div></div>
   <div id="streak"></div>
+  <div id="buyMenu" class="screen" style="display:none;background:rgba(8,12,20,0.92);align-items:center;justify-content:center;">
+    <div style="background:linear-gradient(180deg,#161c28,#0c1018);border:2px solid #5dff8a;border-radius:12px;padding:24px 28px;max-width:520px;width:90%;box-shadow:0 0 40px rgba(93,255,138,0.25);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+        <h2 style="color:#5dff8a;margin:0;font-size:1.4rem;letter-spacing:0.05em;">AMMU-NATION</h2>
+        <span style="color:#8a98a8;font-size:0.8rem;">Press B to close</span>
+      </div>
+      <div style="color:#c8d0dc;font-size:0.85rem;margin-bottom:16px;">No questions asked. Cash only. <span id="buyCash" style="color:#5dff8a;font-weight:bold;"></span></div>
+      <div id="buyList" style="display:flex;flex-direction:column;gap:8px;"></div>
+      <div style="color:#6a7888;font-size:0.75rem;margin-top:14px;text-align:center;">Buying heat raises your wanted level — move away from witnesses first.</div>
+    </div>
+  </div>
   <div id="adminOverlay">
     <div id="adminPanel">
       <div id="adminHead">
@@ -399,6 +443,14 @@ const WEAPONS={
   sniper:  {name:'SNIPER',     mag:5,  ammo:20,  dmg:80, fireRate:1.0,  spread:0.005,auto:false, reload:2.4, range:200, tracer:0x6bb6ff},
 };
 const weaponColors={pistol:0xc8c8d0,smg:0x404048,shotgun:0x704030,rifle:0x303038,sniper:0x2a2a32};
+// radio stations — cycle with R while driving (overrides reload in a car)
+const radioStations=[
+  {name:'V-ROCK',  color:'#ff5a5a', tag:'♪ V-ROCK'},
+  {name:'WAVE 104',color:'#5a8aff', tag:'♪ WAVE 104'},
+  {name:'FLASH FM',color:'#5dff8a', tag:'♪ FLASH FM'},
+  {name:'EMOTION',color:'#c85aff', tag:'♪ EMOTION'},
+  {name:'OFF',     color:'#8a98a8', tag:'♪ — OFF'},
+];
 
 /* ---------- Renderer/scene ---------- */
 let renderer, scene, camera, sun, hemi, moon, skyMesh;
@@ -472,16 +524,16 @@ let yaw=0, pitch=0;
 addEventListener('keydown', e=>{
   // ===== F12 ADMIN CONSOLE — intercept exactly on F12 =====
   if(e.key==='F12'||e.keyCode===123){ e.preventDefault(); e.stopPropagation(); toggleAdmin(); return false; }
+  // buy menu open → only B and Escape pass through, the rest are blocked so the player doesn't move
+  if(buyOpen){ const k=e.key.toLowerCase(); if(k==='b') toggleBuyMenu(); if(e.key==='Escape') toggleBuyMenu(); return; }
   if(e.key==='Escape'){ if(admin.open) toggleAdmin(false); }
   const k=e.key.toLowerCase();
   keys[k]=true;
   if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k)) e.preventDefault();
   if(k==='f') tryEnterExit();
-  if(k==='r') reload();
-  if(k==='q') ultimate();
-  if(k==='shift') ability(0);
-  if(k==='e') ability(1);
+  if(k==='r'){ if(player.inCar) cycleRadio(); else reload(); }
   if(k==='h') tryRobStore();
+  if(k==='b') toggleBuyMenu();    // B = buy menu (Ammo · Armor · Guns)
   if(k==='p') togglePhotoMode();
 });
 addEventListener('keyup', e=>{ keys[e.key.toLowerCase()]=false; });
@@ -599,7 +651,59 @@ const trees=[];
    Procedural Texture Library — all canvas-generated, no assets
    ============================================================ */
 function newCanvas(w,h){ const cv=document.createElement('canvas'); cv.width=w; cv.height=h||w; return cv; }
-function texFromCanvas(cv,repX,repY){ const t=new THREE.CanvasTexture(cv); t.wrapS=t.wrapT=THREE.RepeatWrapping; if(repX)t.repeat.x=repX; if(repY)t.repeat.y=repY||repX; t.anisotropy=8; return t; }
+function texFromCanvas(cv,repX,repY){ const t=new THREE.CanvasTexture(cv); t.wrapS=t.wrapT=THREE.RepeatWrapping; if(repX)t.repeat.x=repX; if(repY)t.repeat.y=repY||repX; t.anisotropy=8; t.encoding=THREE.sRGBEncoding; return t; }
+// build a normal map (tangent-space, +Y up) from a height function over a grid
+function normalTexFromHeight(size, repX, repY, heightFn){
+  const cv=newCanvas(size); const c=cv.getContext('2d'); const img=c.createImageData(size,size);
+  // sample height into a grid
+  const h=new Float32Array(size*size);
+  for(let y=0;y<size;y++) for(let x=0;x<size;x++) h[y*size+x]=heightFn(x,y);
+  const strength=2.2;
+  for(let y=0;y<size;y++){ for(let x=0;x<size;x++){
+    const xl=h[y*size+((x-1+size)%size)], xr=h[y*size+((x+1)%size)];
+    const yt=h[((y-1+size)%size)*size+x], yb=h[((y+1)%size)*size+x];
+    const nx=clamp((xl-xr)*strength,-1,1), ny=clamp((yt-yb)*strength,-1,1), nz=1;
+    const len=Math.hypot(nx,ny,nz);
+    const idx=(y*size+x)*4;
+    img.data[idx]=Math.round((nx/len*0.5+0.5)*255);
+    img.data[idx+1]=Math.round((ny/len*0.5+0.5)*255);
+    img.data[idx+2]=Math.round((nz/len*0.5+0.5)*255);
+    img.data[idx+3]=255;
+  }}
+  c.putImageData(img,0,0);
+  const t=new THREE.CanvasTexture(cv); t.wrapS=t.wrapT=THREE.RepeatWrapping; if(repX)t.repeat.x=repX; if(repY)t.repeat.y=repY||repX; t.anisotropy=4; return t;
+}
+// asphalt normal map — fine grain + cracks (the same cracks from the road diffuse)
+function roadNormalTexture(){
+  // place cracks along a few seeded lines so relief shows under the sun
+  const cracks=[];
+  for(let i=0;i<40;i++){ const pts=[]; let x=Math.random()*1024,y=Math.random()*1024; pts.push([x,y]); for(let j=0;j<4;j++){ x+=rand(-30,30); y+=rand(-30,30); pts.push([x,y]); } cracks.push(pts); }
+  return normalTexFromHeight(256,4,4,(x,y)=>{
+    let h=0; // base flat asphalt
+    h+=(Math.sin(x*0.9)*Math.cos(y*0.7))*0.04; // gentle ripple
+    h+= (Math.random()-0.5)*0.03; // grain (static per pixel read — fine since subtle)
+    // grooves near lane centerline and crosswalk edges
+    if(Math.abs(y-128)<3 || Math.abs(x-128)<3) h-=0.25;
+    for(const pts of cracks){ for(const p of pts){ if(Math.abs(p[0]/4-x)<2 && Math.abs(p[1]/4-y)<2){ h-=0.4; } } }
+    return h;
+  });
+}
+// brick/concrete facade normal map — mortar grooves between window cells
+function facadeNormalTexture(){
+  return normalTexFromHeight(128,1,1,(x,y)=>{
+    let h=0.02*Math.sin(x*0.3)*Math.cos(y*0.3);
+    const cellW=128/4, cellH=128/5;
+    const mx=x%cellW, my=y%cellH;
+    // mortar grooves at cell borders
+    if(mx<3||mx>cellW-3) h-=0.5;
+    if(my<3||my>cellH-3) h-=0.5;
+    // slight window recess
+    if(mx>10&&mx<cellW-10&&my>8&&my<cellH-8) h-=0.12;
+    return h;
+  });
+}
+// shared facade normal map — cloned per building with matching vertical repeat
+const facadeNormalTex=facadeNormalTexture();
 
 // Asphalt road with lane lines, crosswalks at edges, noise speckle
 function roadTexture(){
@@ -710,7 +814,7 @@ function buildCity(){
   // Roads (asphalt with lanes + crosswalks)
   const roadTex=roadTexture();
   const citySpan=CITY*STEP+ROAD;
-  roadMat=new THREE.MeshStandardMaterial({map:roadTex,roughness:.95,metalness:.05});
+  roadMat=new THREE.MeshStandardMaterial({map:roadTex,normalMap:roadNormalTexture(),roughness:.95,metalness:.05,normalScale:new THREE.Vector2(0.8,0.8)});
   const roadMesh=new THREE.Mesh(new THREE.PlaneGeometry(citySpan, citySpan), roadMat);
   roadMesh.rotation.x=-Math.PI/2; roadMesh.position.y=0.02; roadMesh.receiveShadow=true; scene.add(roadMesh);
 
@@ -789,8 +893,11 @@ function addBuilding(x,z,w,d,h,color,style){
   style=style||0;
   const tex=facadeTexture(color,style);
   // repeat facade texture to tile down the building height
-  tex.repeat.set(1,Math.max(1,Math.round(h/12)));
-  const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d), new THREE.MeshStandardMaterial({map:tex,color:0xffffff,roughness:.8,metalness:0.1}));
+  const vRep=Math.max(1,Math.round(h/12));
+  tex.repeat.set(1,vRep);
+  // matching tangent-space normal map for the facade (window + mortar relief)
+  const nrm=facadeNormalTex.clone(); nrm.needsUpdate=true; nrm.repeat.set(1,vRep);
+  const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d), new THREE.MeshStandardMaterial({map:tex,color:0xffffff,normalMap:nrm,roughness:.78,metalness:0.1,normalScale:new THREE.Vector2(0.7,0.7)}));
   m.position.set(x,h/2,z); m.castShadow=true; m.receiveShadow=true; scene.add(m);
   // roof cap
   const roof=new THREE.Mesh(new THREE.BoxGeometry(w+0.4,0.6,d+0.4), new THREE.MeshStandardMaterial({map:roofTexture(),color:0x555555,roughness:.9})); roof.position.set(x,h+0.3,z); roof.castShadow=true; scene.add(roof);
@@ -835,7 +942,7 @@ function neonSignTexture(){
   c.font='bold 12px Arial, sans-serif'; c.fillStyle=`#${accent.toString(16).padStart(6,'0')}`;
   const sub=pick(['OPEN ALL NIGHT','DOWNTOWN','SINCE 1974','FINE DINING','LIVE MUSIC','ROOFTOP BAR']);
   c.fillText(sub, 128, 105);
-  const t=new THREE.CanvasTexture(cv); t.anisotropy=4; return t;
+  const t=new THREE.CanvasTexture(cv); t.anisotropy=4; t.encoding=THREE.sRGBEncoding; return t;
 }
 function windowTexture(baseColor){ return facadeTexture(baseColor,0); }
 
@@ -854,37 +961,66 @@ const player={x:ROAD0,z:ROAD0,y:0,vx:0,vz:0,vy:0,angle:0,r:0.5,h:1.7,walkPhase:0
 function capsule(r,h){ return new THREE.CylinderGeometry(r,r,h,8); }
 function buildPlayerMesh(){
   if(player.mesh) scene.remove(player.mesh);
-  const col=G.hero.color;
   const g=new THREE.Group();
-  // upperBody pivots at the waist — lets the torso twist toward the aim independently of the legs
-  const upper=new THREE.Group(); upper.position.y=0.78; g.add(upper);
-  const bodyMat=new THREE.MeshStandardMaterial({color:col,roughness:.5,metalness:.3});
-  const body=new THREE.Mesh(capsule(0.35,0.7), bodyMat); body.position.y=0.22; body.castShadow=true; upper.add(body);
-  const chest=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.3,0.4), new THREE.MeshStandardMaterial({color:0x222230,roughness:.4,metalness:.5})); chest.position.y=0.47; upper.add(chest);
-  const head=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10), new THREE.MeshStandardMaterial({color:0xe0b48a,roughness:.7})); head.position.y=0.92; head.castShadow=true; upper.add(head);
-  const visor=new THREE.Mesh(new THREE.BoxGeometry(0.36,0.12,0.08), new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.6})); visor.position.set(0,0.94,0.22); upper.add(visor);
-  // arms — shoulder pivot groups so they swing from the shoulder, not the elbow
-  const armMat=new THREE.MeshStandardMaterial({color:col,roughness:.5,metalness:.3});
-  function makeArm(side){ // side: -1 left, +1 right
-    const shoulder=new THREE.Group(); shoulder.position.set(side*0.45,0.45,0); upper.add(shoulder);
-    const arm=new THREE.Mesh(capsule(0.13,0.5), armMat); arm.position.y=-0.3; arm.castShadow=true; shoulder.add(arm);
-    return shoulder;
+  // civilian palette — a hoodie, dark jeans, sneakers. No hero armor, no visor.
+  const skinMat =new THREE.MeshStandardMaterial({color:0xe0b48a,roughness:.7});
+  const hoodieMat=new THREE.MeshStandardMaterial({color:0x3a4a5a,roughness:.85,metalness:.05});
+  const sleeveMat=new THREE.MeshStandardMaterial({color:0x33414f,roughness:.85});
+  const pantsMat =new THREE.MeshStandardMaterial({color:0x2a2d3a,roughness:.8});
+  const shoeMat  =new THREE.MeshStandardMaterial({color:0x14141c,roughness:.6,metalness:.1});
+  const hairMat  =new THREE.MeshStandardMaterial({color:0x2a1a12,roughness:.8});
+  const packMat  =new THREE.MeshStandardMaterial({color:0x6a4a2a,roughness:.85});
+
+  // lower body (legs + hips) live on the root group; upper body on a waist pivot
+  // UPPER BODY — torso, head, hair, face, arms
+  const upper=new THREE.Group(); upper.position.y=0.95; g.add(upper);
+  // torso (hoodie) — slightly tapered capsule
+  const torso=new THREE.Mesh(capsule(0.32,0.5), hoodieMat); torso.position.y=0.18; torso.castShadow=true; upper.add(torso);
+  // hoodie hood collar
+  const collar=new THREE.Mesh(new THREE.TorusGeometry(0.30,0.07,8,14), hoodieMat); collar.position.y=0.42; collar.rotation.x=Math.PI/2; upper.add(collar);
+  // chest pocket detail (zip line)
+  const zip=new THREE.Mesh(new THREE.BoxGeometry(0.04,0.5,0.02), new THREE.MeshStandardMaterial({color:0x1a2030,roughness:.6})); zip.position.set(0,0.18,0.30); upper.add(zip);
+  // backpack
+  const pack=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.5,0.22), packMat); pack.position.set(0,0.20,-0.30); pack.castShadow=true; upper.add(pack);
+  // head
+  const head=new THREE.Mesh(new THREE.SphereGeometry(0.22,14,12), skinMat); head.position.y=0.62; head.castShadow=true; upper.add(head);
+  // hair cap
+  const hair=new THREE.Mesh(new THREE.SphereGeometry(0.235,14,12, 0,Math.PI*2, 0,Math.PI*0.62), hairMat); hair.position.y=0.66; upper.add(hair);
+  // face — two eyes + a brow hint, drawn as small dark spheres on the front of the head
+  const eyeMat=new THREE.MeshStandardMaterial({color:0x14141c,roughness:.4});
+  const lEye=new THREE.Mesh(new THREE.SphereGeometry(0.035,8,8), eyeMat); lEye.position.set(-0.07,0.62,0.20); upper.add(lEye);
+  const rEye=new THREE.Mesh(new THREE.SphereGeometry(0.035,8,8), eyeMat); rEye.position.set( 0.07,0.62,0.20); upper.add(rEye);
+  // arms — shoulder pivot with a forearm/elbow sub-group for a natural bend
+  function makeArm(side){
+    const shoulder=new THREE.Group(); shoulder.position.set(side*0.40,0.36,0); upper.add(shoulder);
+    const upperArm=new THREE.Mesh(capsule(0.10,0.26), sleeveMat); upperArm.position.y=-0.15; upperArm.castShadow=true; shoulder.add(upperArm);
+    const elbow=new THREE.Group(); elbow.position.y=-0.30; shoulder.add(elbow);
+    const foreArm=new THREE.Mesh(capsule(0.09,0.26), skinMat); foreArm.position.y=-0.14; foreArm.castShadow=true; elbow.add(foreArm);
+    const hand=new THREE.Mesh(new THREE.SphereGeometry(0.09,10,8), skinMat); hand.position.y=-0.30; elbow.add(hand);
+    return {shoulder,elbow};
   }
-  const lArm=makeArm(-1), rArm=makeArm(1);
-  // legs — hip pivot groups so they swing from the hip
-  const legMat=new THREE.MeshStandardMaterial({color:0x2a2a3a,roughness:.7});
-  function makeLeg(side){
-    const hip=new THREE.Group(); hip.position.set(side*0.18,0,0); g.add(hip);
-    const leg=new THREE.Mesh(capsule(0.15,0.55), legMat); leg.position.y=-0.4; leg.castShadow=true; hip.add(leg);
-    return hip;
-  }
-  const lLeg=makeLeg(-1), rLeg=makeLeg(1);
+  const L=makeArm(-1), R=makeArm(1);
+  const lArm=L.shoulder, rArm=R.shoulder;
   // gun (held in right hand, visible only when armed)
   const gun=new THREE.Group();
-  const gunBody=new THREE.Mesh(new THREE.BoxGeometry(0.14,0.18,0.7), new THREE.MeshStandardMaterial({color:0x33333a,metalness:.6,roughness:.3})); gun.add(gunBody);
-  const gunBarrel=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.5,8), new THREE.MeshStandardMaterial({color:0x222228,metalness:.7})); gunBarrel.rotation.x=Math.PI/2; gunBarrel.position.set(0,0.04,0.5); gun.add(gunBarrel);
-  gun.position.set(0,-0.35,0.35); gun.visible=false; rArm.add(gun);
-  player.parts={upper,body,head,visor,lArm,rArm,lLeg,rLeg,gun};
+  const gunBody=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.16,0.55), new THREE.MeshStandardMaterial({color:0x2a2a30,metalness:.6,roughness:.35})); gun.add(gunBody);
+  const gunBarrel=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.045,0.42,8), new THREE.MeshStandardMaterial({color:0x1a1a20,metalness:.7})); gunBarrel.rotation.x=Math.PI/2; gunBarrel.position.set(0,0.03,0.42); gun.add(gunBarrel);
+  const gunGrip=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.16,0.10), new THREE.MeshStandardMaterial({color:0x14141a,roughness:.6})); gunGrip.position.set(0,-0.12,0.0); gun.add(gunGrip);
+  gun.position.set(0,-0.28,0.32); gun.visible=false; R.elbow.add(gun);
+  // LEGS — hip pivot with a shin/knee sub-group
+  function makeLeg(side){
+    const hip=new THREE.Group(); hip.position.set(side*0.16,-0.02,0); g.add(hip);
+    const thigh=new THREE.Mesh(capsule(0.13,0.30), pantsMat); thigh.position.y=-0.17; thigh.castShadow=true; hip.add(thigh);
+    const knee=new THREE.Group(); knee.position.y=-0.34; hip.add(knee);
+    const shin=new THREE.Mesh(capsule(0.11,0.28), pantsMat); shin.position.y=-0.15; shin.castShadow=true; knee.add(shin);
+    const shoe=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.10,0.34), shoeMat); shoe.position.set(0,-0.30,0.06); shoe.castShadow=true; knee.add(shoe);
+    return {hip,knee};
+  }
+  const LL=makeLeg(-1), RR=makeLeg(1);
+  const lLeg=LL.hip, rLeg=RR.hip;
+  // keep knee sub-groups for a bent-stride animation
+  player.parts={upper,body:torso,head,visor:hair,lArm,rArm,lLeg,rLeg,gun,
+    lElbow:L.elbow,rElbow:R.elbow,lKnee:LL.knee,rKnee:RR.knee,collar,pack};
   player.mesh=g; scene.add(g);
 }
 
@@ -893,9 +1029,9 @@ const carColors=[0xc84a4a,0x4a7ac8,0x4ac86b,0xc8b04a,0x7a7a8a,0x22252b,0xe0e0e8,
 function makeCar(x,z,angle,color,type='sedan'){
   const truck=type==='truck', sports=type==='sports';
   const w=sports?1.9:2.1, l=truck?5.2:sports?4.2:4.6;
-  const car={x,z,angle,vx:0,vz:0,r:1.5,w,l,color,type,hp:100,occupied:false,isPlayer:false,maxSpeed:sports?52:truck?32:42,speed:0,mesh:null,wheels:[],hlMats:[],tlMat:null};
+  const car={x,z,angle,vx:0,vz:0,r:1.5,w,l,color,type,hp:100,maxHp:100,occupied:false,isPlayer:false,maxSpeed:sports?52:truck?32:42,speed:0,mesh:null,wheels:[],hlMats:[],tlMat:null,fuel:100,radio:0}; car._origMax=car.maxSpeed;
   const g=new THREE.Group();
-  const bodyMat=new THREE.MeshStandardMaterial({color,roughness:.3,metalness:.6});
+  const bodyMat=new THREE.MeshStandardMaterial({color,roughness:.22,metalness:.75,envMapIntensity:1.2});
   // lower body
   const lower=new THREE.Mesh(new THREE.BoxGeometry(w,0.5,l), bodyMat); lower.position.y=0.55; lower.castShadow=true; g.add(lower);
   // hood (front, slightly lower) + trunk (rear)
@@ -903,7 +1039,7 @@ function makeCar(x,z,angle,color,type='sedan'){
   const hood=new THREE.Mesh(new THREE.BoxGeometry(w*0.95,0.35,hoodLen), bodyMat); hood.position.set(0,0.8,l/2-hoodLen/2-0.1); hood.castShadow=true; g.add(hood);
   // sloped cabin (windshield) — use a tapered shape via a scaled box rotated
   const cabinLen=truck?l*0.3:sports?l*0.42:l*0.38;
-  const glassMat=new THREE.MeshStandardMaterial({color:0x101820,roughness:.08,metalness:.4,transparent:true,opacity:0.7});
+  const glassMat=new THREE.MeshStandardMaterial({color:0x0a1018,roughness:.05,metalness:.5,transparent:true,opacity:0.62,envMapIntensity:1.5});
   const cabin=new THREE.Mesh(new THREE.BoxGeometry(w*0.85,0.55,cabinLen), glassMat); cabin.position.set(0,1.2,-l*0.05); cabin.castShadow=true; g.add(cabin);
   // roof
   const roof=new THREE.Mesh(new THREE.BoxGeometry(w*0.82,0.12,cabinLen*0.7), bodyMat); roof.position.set(0,1.5,-l*0.05); roof.castShadow=true; g.add(roof);
@@ -967,6 +1103,12 @@ function updateHelis(dt){
     const dx=player.x-h.x, dz=player.z-h.z; const d=Math.hypot(dx,dz)||1;
     h.x+=dx/d*8*dt; h.z+=dz/d*8*dt; h.y=25+Math.sin(G.time*1.5)*2;
     h.angle=Math.atan2(dz,dx); h.mesh.position.set(h.x,h.y,h.z); h.mesh.rotation.y=h.angle;
+    // heli suppresses the player with machine-gun fire when it has a shot
+    h.fireCool=(h.fireCool||0)-dt;
+    if(G.wantedKnown && d<70 && h.fireCool<=0){
+      fireBullet(h.x,h.y,h.z,{x:dx/d,y:0,z:dz/d},false,10,70,0xff5a5a,0.06,false,h);
+      h.fireCool=0.18; G.shake=Math.max(G.shake,0.1);
+    }
     if(h.life<=0){ scene.remove(h.mesh); G.helis.splice(i,1); }
   }
 }
@@ -978,14 +1120,24 @@ function makePed(x,z){
   const p={x,z,vx:0,vz:0,r:0.35,angle:rand(0,TAU),speed:rand(1.0,1.8),state:'walk',t:rand(0,6),walkPhase:0,fleeT:0,dead:false,deadT:0,hp:30,mesh:null,parts:{},shirt:pick(pedShirts),pants:pick(pedPants),skin:pick([0xe0b48a,0xc89878,0xa87858,0x8a6048,0xd8a878])};
   const g=new THREE.Group();
   const bodyMat=new THREE.MeshStandardMaterial({color:p.shirt,roughness:.85});
-  const body=new THREE.Mesh(capsule(0.28,0.55), bodyMat); body.position.y=0.95; body.castShadow=true; g.add(body);
-  const head=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8), new THREE.MeshStandardMaterial({color:p.skin,roughness:.7})); head.position.y=1.5; head.castShadow=true; g.add(head);
-  const armMat=new THREE.MeshStandardMaterial({color:p.shirt,roughness:.85});
-  const lArm=new THREE.Mesh(capsule(0.1,0.45), armMat); lArm.position.set(-0.36,0.95,0); lArm.castShadow=true; g.add(lArm);
-  const rArm=lArm.clone(); rArm.position.x=0.36; g.add(rArm);
-  const legMat=new THREE.MeshStandardMaterial({color:p.pants,roughness:.9});
-  const lLeg=new THREE.Mesh(capsule(0.12,0.5), legMat); lLeg.position.set(-0.14,0.32,0); lLeg.castShadow=true; g.add(lLeg);
-  const rLeg=lLeg.clone(); rLeg.position.x=0.14; g.add(rLeg);
+  const skinMat =new THREE.MeshStandardMaterial({color:p.skin,roughness:.7});
+  const armMat =new THREE.MeshStandardMaterial({color:p.shirt,roughness:.85});
+  const legMat =new THREE.MeshStandardMaterial({color:p.pants,roughness:.9});
+  const hairMat =new THREE.MeshStandardMaterial({color:pick([0x2a1a12,0x3a2a1a,0x1a1a1a,0x6a4a2a,0x8a8a8a]),roughness:.8});
+  // torso
+  const body=new THREE.Mesh(capsule(0.26,0.5), bodyMat); body.position.y=0.95; body.castShadow=true; g.add(body);
+  // head + hair + face
+  const head=new THREE.Mesh(new THREE.SphereGeometry(0.18,10,8), skinMat); head.position.y=1.42; head.castShadow=true; g.add(head);
+  const hair=new THREE.Mesh(new THREE.SphereGeometry(0.19,10,8, 0,Math.PI*2, 0,Math.PI*0.6), hairMat); hair.position.y=1.46; g.add(hair);
+  const eyeMat=new THREE.MeshStandardMaterial({color:0x14141c,roughness:.5});
+  const le=new THREE.Mesh(new THREE.SphereGeometry(0.022,6,6), eyeMat); le.position.set(-0.06,1.43,0.16); g.add(le);
+  const re=new THREE.Mesh(new THREE.SphereGeometry(0.022,6,6), eyeMat); re.position.set( 0.06,1.43,0.16); g.add(re);
+  // arms — shoulder pivot groups so they swing from the shoulder
+  function makeArm(side){ const sh=new THREE.Group(); sh.position.set(side*0.34,1.18,0); g.add(sh); const a=new THREE.Mesh(capsule(0.09,0.42), armMat); a.position.y=-0.22; a.castShadow=true; sh.add(a); return sh; }
+  const lArm=makeArm(-1), rArm=makeArm(1);
+  // legs — hip pivot groups so they swing from the hip
+  function makeLeg(side){ const hp=new THREE.Group(); hp.position.set(side*0.13,0.70,0); g.add(hp); const l=new THREE.Mesh(capsule(0.11,0.46), legMat); l.position.y=-0.24; l.castShadow=true; hp.add(l); return hp; }
+  const lLeg=makeLeg(-1), rLeg=makeLeg(1);
   p.parts={lLeg,rLeg,lArm,rArm};
   p.mesh=g; p.mesh.position.set(x,0,z); p.mesh.rotation.y=p.angle; scene.add(p.mesh);
   return p;
@@ -994,12 +1146,19 @@ function updatePed(p,dt){
   if(p.dead){ p.deadT-=dt; p.mesh.rotation.z=lerp(p.mesh.rotation.z,Math.PI/2,0.08); p.mesh.position.y=Math.max(-0.3,p.mesh.position.y-dt*0.5); if(p.deadT<=0){ scene.remove(p.mesh); } return; }
   // sense danger: nearby gunfire (tracers), player gunfire, or hostiles/cars approaching fast
   let danger=false, dangerAng=p.angle;
+  const dP=Math.hypot(p.x-player.x,p.z-player.z);
   // nearby player firing or combat within 14m
-  if((G.shake>0.1 && Math.hypot(p.x-player.x,p.z-player.z)<16) || G.threat>0){
+  if((G.shake>0.1 && dP<16) || G.threat>0){
     danger=true; dangerAng=Math.atan2(p.z-player.z,p.x-player.x)+Math.PI; // flee away from player
   }
   // nearby fast car
   for(const c of G.cars){ if(c.speed>5 && Math.hypot(p.x-c.x,p.z-c.z)<8){ danger=true; dangerAng=Math.atan2(p.z-c.z,p.x-c.x); break; } }
+  // a drawn gun pointed near a pedestrian within 12m is enough to panic them
+  if(player.hasGun && (mouse.rdown||mouse.down) && dP<12 && G.wanted<4){
+    danger=true; dangerAng=Math.atan2(p.z-player.z,p.x-player.x)+Math.PI;
+    p.callT=(p.callT||0)+dt;
+    if(p.callT>1.6 && !p.called){ p.called=true; addWanted(1); notice('A witness is calling 911!'); }
+  } else { p.callT=0; }
   if(danger){ p.state='flee'; p.fleeT=2.5; }
   if(p.fleeT>0){ p.fleeT-=dt; p.state='flee'; }
   if(p.state==='flee'){
@@ -1039,6 +1198,29 @@ function updatePeds(dt){
     if(p.dead && p.deadT<=0) G.peds.splice(i,1);
     // despawn faraway peds to keep density near player
     else if(!p.dead && Math.hypot(p.x-player.x,p.z-player.z)>100){ scene.remove(p.mesh); G.peds.splice(i,1); }
+  }
+}
+
+/* ---------- Rival gang members (ambient threat — attack on sight) ---------- */
+const gangColors=[0x5a2a2a,0x2a2a5a,0x3a3a3a];
+function makeGang(x,z){
+  // a hostile that's already "alerted" and opens fire the moment it sees the player
+  const h=makeHostile(x,z,'grunt');
+  h.kind='gang'; h.name='GANG'; h.alertT=999; h.speed=3.6; h.fireRate=0.55; h.dmg=11; h.range=60; h.score=120;
+  if(h.mesh){ h.mesh.children[0].material.color.setHex(pick(gangColors)); }
+  // bandana / colors marker
+  const band=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.06,0.3), new THREE.MeshStandardMaterial({color:0xc01030,emissive:0x400810,emissiveIntensity:0.3})); band.position.y=1.62; h.mesh.add(band);
+  return h;
+}
+function updateGangs(dt){
+  G.gangs=G.gangs||[];
+  // keep ~5 ambient gang members in the world, far from the player so they're encountered, not spawned on top of you
+  while(G.gangs.length<5){ const p=pointFarFromPlayer(30,HALF-15); G.gangs.push(makeGang(p.x,p.z)); }
+  for(let i=G.gangs.length-1;i>=0;i--){
+    const g=G.gangs[i];
+    updateHostile(g,dt);
+    if(g.dead && g.deadT<=0){ G.gangs.splice(i,1); }
+    else if(!g.dead && Math.hypot(g.x-player.x,g.z-player.z)>110){ scene.remove(g.mesh); G.gangs.splice(i,1); }
   }
 }
 
@@ -1268,7 +1450,7 @@ function damageHostile(h,dmg){
 }
 function killHostile(h){
   h.dead=true; h.deadT=0; G.elim++; G.score+=h.score; sndKill();
-  addKillfeed(`<span class="me">${G.hero.name}</span> eliminated <b>${h.kind.toUpperCase()}</b>`);
+  addKillfeed(`<span class="me">${G.hero.name}</span> took down <b>${h.kind.toUpperCase()}</b>`);
   G.abilities[2].charge=clamp(G.abilities[2].charge+G.hero.ult.rate*8,0,G.hero.ult.charge);
   // drop pickup
   if(Math.random()<0.5) spawnPickup(h.x,h.z,pick(['health','armor','ammo']));
@@ -1382,7 +1564,7 @@ function spawnWave(){
     const kind=Math.random()<0.2?'heavy':Math.random()<0.3?'sniper':'grunt';
     G.hostiles.push(makeHostile(p.x,p.z,kind));
   }
-  notice('Hostile wave inbound ('+n+')');
+  notice('Rival gang rolling up on you ('+n+')');
 }
 
 /* ---------- Pickups ---------- */
@@ -1414,7 +1596,50 @@ function tryEnterExit(){
   if(player.enterCool>0) return;
   if(player.inCar){ const c=player.inCar; const side=c.angle-Math.PI/2; player.x=c.x+Math.cos(side)*2.4; player.z=c.z+Math.sin(side)*2.4; player.vx=0; player.vz=0; player.y=0; c.occupied=false; c.isPlayer=false; c.vx*=0.5; c.vz*=0.5; player.inCar=null; player.enterCool=0.5; if(player.mesh) player.mesh.visible=true; notice('Exited vehicle'); return; }
   let best=null,bd=6; for(const c of G.cars){ const d=Math.hypot(c.x-player.x,c.z-player.z); if(d<bd){ best=c; bd=d; } }
-  if(best){ best.occupied=true; best.isPlayer=true; player.inCar=best; player.enterCool=0.5; if(player.mesh) player.mesh.visible=false; notice('Vehicle commandeered'); }
+  if(!best){ return; }
+  // carjack: an occupied civilian car isn't handed over freely — the driver fights back or bolts
+  if(best.occupied && !best.isCop){
+    if(best.driverFled){ /* already empty */ }
+    else if(Math.random()<0.4){
+      // driver fights back — spawns a hostile right outside the door
+      notice('The driver throws a punch!');
+      const h=makeHostile(best.x+1.5,best.z,'grunt'); h.kind='driver'; h.name='DRIVER'; h.alertT=999; h.hp=50; h.maxHp=50; h.dmg=8; h.range=4; h.fireRate=1.2; h.speed=4;
+      G.hostiles.push(h); best.driverFled=true;
+      addWanted(1); // a brawl in the street draws eyes
+    } else {
+      // driver bails and runs
+      notice('The driver bails and runs!');
+      const p=makePed(best.x+1.5,best.z); p.fleeT=4; p.state='flee'; G.peds.push(p);
+      best.driverFled=true; best.occupied=false;
+    }
+  }
+  if(best.occupied && best.isCop){ notice("Cop car — they're not giving it up easy"); addWanted(1); }
+  best.occupied=true; best.isPlayer=true; player.inCar=best; player.enterCool=0.5; if(player.mesh) player.mesh.visible=false; notice('Vehicle commandeered');
+}
+// damage a vehicle; total it (explode + eject the player) when HP hits zero
+function damageVehicle(c,amt){
+  if(c.type==='tank') return; // tanks are armored — small collisions don't hurt them
+  c.hp=Math.max(0,c.hp-amt);
+  if(c.hp<=0 && !c.dead){
+    c.dead=true;
+    explode(c.x,c.z,8,80,true); G.shake=1.2;
+    if(player.inCar===c){
+      damagePlayer(40); // getting blown out of your seat hurts
+      tryEnterExit(); // eject
+      notice('Your ride blew up!');
+    }
+    // schedule removal
+    setTimeout(()=>{ if(c.mesh){ scene.remove(c.mesh); } }, 1500);
+  }
+}
+// cycle the in-car radio station
+function cycleRadio(){
+  if(!player.inCar) return;
+  const c=player.inCar;
+  c.radio=(c.radio+1)%radioStations.length;
+  const st=radioStations[c.radio];
+  notice('RADIO: '+st.name);
+  sndPickup();
 }
 
 /* ---------- Game over / respawn ---------- */
@@ -1536,19 +1761,25 @@ function update(dt){
         const aimTwist = (mouse.rdown||mouse.down) ? clamp(pitch*0.25,-0.3,0.3) : 0;
         P.upper.rotation.x=lerp(P.upper.rotation.x||0, aimTwist, 0.2);
       }
-      // walk/run cycle — hips swing legs, shoulders swing arms (offset half-cycle)
+      // walk/run cycle — hips swing legs, shoulders swing arms (offset half-cycle), knees & elbows bend
       const amp=clamp(sp*0.09,0,0.85);
       const sw=Math.sin(player.walkPhase)*amp;
+      const swC=Math.cos(player.walkPhase)*amp; // bent-knee phase, peaks mid-stride
       if(P.lLeg){ P.lLeg.rotation.x=sw; P.rLeg.rotation.x=-sw; }
+      // bend knees so the leg that's lifting forward tucks, the planted one straightens
+      if(P.lKnee){ P.lKnee.rotation.x=lerp(P.lKnee.rotation.x, Math.max(0, sw*0.9+0.15), 0.3); P.rKnee.rotation.x=lerp(P.rKnee.rotation.x, Math.max(0, -sw*0.9+0.15), 0.3); }
       // idle breathing when standing still
-      if(sp<0.3){ const breathe=Math.sin(G.time*1.6)*0.03; if(P.upper) P.upper.position.y=0.78+breathe; }
-      else if(P.upper){ P.upper.position.y=lerp(P.upper.position.y,0.78,0.1); }
+      if(sp<0.3){ const breathe=Math.sin(G.time*1.6)*0.03; if(P.upper) P.upper.position.y=0.95+breathe; }
+      else if(P.upper){ P.upper.position.y=lerp(P.upper.position.y,0.95,0.1); }
       // arms: left arm swings opposite to legs; right arm holds the gun forward when armed
       if(P.lArm && P.rArm){
         P.lArm.rotation.x=lerp(P.lArm.rotation.x, -sw*0.7, 0.3);
         const gunFwd = player.hasGun ? (mouse.rdown||mouse.down?0.5:0.2) : 0;
         P.rArm.rotation.x=lerp(P.rArm.rotation.x, gunFwd + sw*0.4, 0.3);
       }
+      // bend elbows slightly — left arm swings, right arm cradles the gun
+      if(P.lElbow){ P.lElbow.rotation.x=lerp(P.lElbow.rotation.x, Math.max(0, sw*0.5+0.2), 0.3); }
+      if(P.rElbow){ P.rElbow.rotation.x=lerp(P.rElbow.rotation.x, player.hasGun?0.6:Math.max(0,-sw*0.5+0.2), 0.3); }
       // punch animation — thrust the right arm forward, recoil over 0.25s
       if(player.punchT>0){
         player.punchT-=dt;
@@ -1568,6 +1799,7 @@ function update(dt){
   updateParticles(dt);
   updateMotes(dt);
   updatePeds(dt);
+  updateGangs(dt);
   updateRain(dt);
   updateStores(dt);
   updateHelis(dt);
@@ -1593,16 +1825,22 @@ function updateCarDrive(c,dt,ix,iz,sprint){
   } else { c._roll=lerp(c._roll||0,0,0.15); }
   const fx=Math.cos(c.angle), fz=Math.sin(c.angle);
   const fwdV=c.vx*fx+c.vz*fz, sideV=-c.vx*fz+c.vz*fx;
-  // grip: handbrake reduces lateral grip (drift), normal has high grip
-  const grip=hb?0.82:0.92;
+  // blown tires when the hull is badly damaged — cuts top speed and loosens grip
+  const blownTires = c.hp < c.maxHp*0.35 && c.type!=='tank';
+  if(blownTires) c.maxSpeed = Math.min(c.maxSpeed, c._origMax*0.5);
+  // grip: handbrake reduces lateral grip (drift), normal has high grip; blown tires slide
+  let grip=hb?0.82:(blownTires?0.74:0.92);
   const newF=fwdV+throttle*accel*dt*(sprint?1.4:1); let newS=sideV*grip;
   const limF=clamp(newF,-c.maxSpeed*0.4,c.maxSpeed);
   c.vx=fx*limF+(-fz)*newS; c.vz=fz*limF+(fx)*newS;
   let nx=c.x+c.vx*dt, nz=c.z+c.vz*dt;
-  if(blockedAt(nx,c.z,c.r)){ c.vx*=-0.2; nx=c.x; if(sp>22) damagePlayer(sp*0.4); }
-  if(blockedAt(c.x,nz,c.r)){ c.vz*=-0.2; nz=c.z; if(sp>22) damagePlayer(sp*0.4); }
+  if(blockedAt(nx,c.z,c.r)){ c.vx*=-0.2; nx=c.x; if(sp>22){ damagePlayer(sp*0.4); damageVehicle(c, sp*0.6); } }
+  if(blockedAt(c.x,nz,c.r)){ c.vz*=-0.2; nz=c.z; if(sp>22){ damagePlayer(sp*0.4); damageVehicle(c, sp*0.6); } }
   c.x=clamp(nx,-HALF+1,HALF-1); c.z=clamp(nz,-HALF+1,HALF-1);
   c.speed=Math.hypot(c.vx,c.vz);
+  // fuel burns with throttle — sputter and slow when the tank runs dry
+  if(c.fuel>0 && Math.abs(throttle)>0) c.fuel=Math.max(0, c.fuel - Math.abs(throttle)*dt*1.4);
+  if(c.fuel<=0){ c.maxSpeed=Math.min(c.maxSpeed, 6); } // out of gas — barely crawls
   // suspension bob — vertical wobble from acceleration/surface
   c._bob=(c._bob||0)+dt*(c.speed*0.5); const bobY=Math.sin(c._bob)*0.04*Math.min(1,c.speed/10);
   // spin wheels visually
@@ -1693,17 +1931,35 @@ function addWanted(n){
   const before=G.wanted;
   G.wanted=clamp(G.wanted+n,0,5);
   if(G.wanted>0) G.wantedKnown=true; // committing a crime IDs you
-  if(G.wanted>before) sndAbility(); // rising siren feel
-  if(G.wanted>0 && G.cops.length===0) spawnCopWave(G.wanted);
+  if(G.wanted>before){ sndAbility(); spawnCopWave(G.wanted); } // rising heat brings more units
 }
 function spawnCopWave(stars){
-  const n=clamp(stars,1,4);
-  for(let i=0;i<n;i++){
-    const p=pointNearPlayer(15,30); // cops arrive close — dense city means far cops get lost
+  // 1★: foot cops patrol on the ground. 3★: cruisers arrive + spike strips. 5★: helis + tactical vans swarm.
+  const n=clamp(stars,1,5);
+  const footWanted=Math.min(n, 3) - G.cops.filter(c=>!c.dead).length;
+  for(let i=0;i<Math.max(0,footWanted);i++){
+    const p=pointNearPlayer(15,30);
     G.cops.push(makeCop(p.x,p.z));
   }
-  if(stars>=3 && G.copCars.length===0){ // higher heat sends cruisers
-    const p=pointNearPlayer(25,45); G.copCars.push(makeCopCar(p.x,p.z,0));
+  // 3★+ sends police cruisers (and replaces lost ones)
+  if(stars>=3){
+    const carsWanted=clamp(stars-2,1,3) - G.copCars.filter(c=>!c.dead).length;
+    for(let i=0;i<Math.max(0,carsWanted);i++){
+      const p=pointNearPlayer(25,45); G.copCars.push(makeCopCar(p.x,p.z,0));
+    }
+  }
+  // 5★ scrambles helicopters and tactical vans squads
+  if(stars>=5){
+    G.helis=G.helis||[];
+    if(G.helis.length===0){ spawnHeli(); notice('POLICE HELICOPTER inbound!'); }
+    // tactical van = heavy-armed cops (swat) dropping close
+    const swatWanted=3 - G.cops.filter(c=>!c.dead && c.kind==='swat').length;
+    for(let i=0;i<Math.max(0,swatWanted);i++){
+      const p=pointNearPlayer(10,20);
+      const s=makeCop(p.x,p.z); s.kind='swat'; s.hp=160; s.maxHp=160; s.dmg=14; s.range=80; s.fireRate=0.35; s.speed=6.4;
+      if(s.mesh) s.mesh.children[0].material.color.setHex(0x1a1a2a); // dark tactical gear
+      G.cops.push(s);
+    }
   }
 }
 function makeCop(x,z){
@@ -1803,18 +2059,71 @@ function tryRobStore(){
   let best=null,bd=999;
   for(const st of stores){ if(st.robbed) continue; const d=Math.hypot(st.x-player.x,st.z-player.z); if(d<6 && d<bd){ bd=d; best=st; } }
   if(!best){ notice('No store nearby to hold up'); return; }
-  // require aiming a gun (or just being armed) — punch won't intimidate
+  // require a weapon — you can't intimidate a clerk with bare hands
   if(!player.hasGun){ notice('You need a weapon to hold up a store'); return; }
   best.robbed=true; best.regT=60;
-  const cash=Math.floor(rand(200,800));
-  addMoney(cash); addWanted(2);
-  notice('HEIST: +$'+cash+' · Cops called!');
-  sndPickup();
+  // the clerk isn't always a pushover — 35% chance they pull a shotgun and fight back
+  const clerkFights=Math.random()<0.35;
+  if(clerkFights){
+    notice('The clerk pulls a SHOTGUN! Fight back!');
+    const h=makeHostile(best.x,best.z+1.5,'clerk');
+    h.weaponName='SHOTGUN'; h.dmg=18; h.range=22; h.fireRate=1.1; h.hp=60;
+    h.kind='clerk'; h.name='CLERK';
+    G.hostiles.push(h);
+    addWanted(3); // shooting it out draws more heat
+  } else {
+    const cash=Math.floor(rand(200,800));
+    addMoney(cash); addWanted(2);
+    notice('HEIST: +$'+cash+' · Cops called!');
+    sndPickup();
+  }
 }
 function updateStores(dt){
   for(const st of stores){
     if(st.robbed){ st.regT-=dt; if(st.regT<=0){ st.robbed=false; st.signMat.emissiveIntensity=0.4; } else st.signMat.emissiveIntensity=0.4+Math.sin(G.time*8)*0.3; }
   }
+}
+/* ---------- Economy: Ammu-Nation buy menu (B) ---------- */
+// buyable stock — ammo refills, body armor, and firearms you can purchase with stolen cash
+const buyStock=[
+  {id:'ammo',  name:'AMMO REFILL',  desc:'Top up your current weapon',     price:150, key:'ammo'},
+  {id:'armor', name:'BODY ARMOR',   desc:'+100 armor',                     price:400, key:'armor'},
+  {id:'pistol',name:'PISTOL',       desc:'Reliable sidearm',                price:300, key:'weapon', wkey:'pistol'},
+  {id:'smg',   name:'SMG',          desc:'Full-auto, short range',         price:900, key:'weapon', wkey:'smg'},
+  {id:'shotgun',name:'SHOTGUN',     desc:'Devastating up close',          price:1200,key:'weapon', wkey:'shotgun'},
+  {id:'rifle', name:'RIFLE',        desc:'Standard assault rifle',         price:1500,key:'weapon', wkey:'rifle'},
+  {id:'sniper',name:'SNIPER',       desc:'Long-range precision',           price:2200,key:'weapon', wkey:'sniper'},
+];
+let buyOpen=false;
+function toggleBuyMenu(){
+  buyOpen=!buyOpen;
+  const el=document.getElementById('buyMenu');
+  el.style.display=buyOpen?'flex':'none';
+  if(buyOpen){ if(mouse.locked) document.exitPointerLock(); refreshBuyMenu(); }
+  else { if(G.running && !G.over) renderer.domElement.requestPointerLock(); }
+}
+function refreshBuyMenu(){
+  document.getElementById('buyCash').textContent='Wallet: $'+G.money.toLocaleString();
+  const list=document.getElementById('buyList'); list.innerHTML='';
+  for(const it of buyStock){
+    const can=G.money>=it.price;
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:8px;'+(can?'background:#1a2230;cursor:pointer;':'background:#141820;opacity:0.45;cursor:not-allowed;');
+    row.innerHTML='<div><div style="color:#e0e8f0;font-weight:bold;font-size:0.95rem;">'+it.name+'</div><div style="color:#8a98a8;font-size:0.78rem;">'+it.desc+'</div></div><div style="color:'+(can?'#5dff8a':'#6a7888')+';font-weight:bold;">$'+it.price.toLocaleString()+'</div>';
+    if(can) row.onclick=()=>buyItem(it);
+    list.appendChild(row);
+  }
+}
+function buyItem(it){
+  if(G.money<it.price){ notice('Not enough cash'); return; }
+  G.money-=it.price; updateMoneyHUD();
+  if(it.key==='ammo'){ if(!G.hero.weapon){ notice('No weapon to reload'); G.money+=it.price; updateMoneyHUD(); return; } G.ammo=G.hero.weapon.ammo; G.mag=G.hero.weapon.mag; notice('Ammo restocked'); }
+  else if(it.key==='armor'){ G.armor=Math.min(G.maxArmor, G.armor+100); notice('Armor equipped'); }
+  else if(it.key==='weapon'){ giveWeapon(it.wkey); }
+  sndPickup();
+  // an armed purchase on the street draws a little heat if you have no gun license (always, here)
+  addWanted(1);
+  refreshBuyMenu();
 }
 
 /* ---------- GTA 6 photo mode ---------- */
@@ -1891,7 +2200,18 @@ function updateHUD(){
   let s=''; for(let i=0;i<5;i++){ const on=i<G.threatStars; const hollow=on&&!G.wantedKnown; s+=`<span class="ts ${on?'on':''} ${hollow?'hollow':''}">★</span>`; } document.getElementById('threatStars').innerHTML=s;
   updateAbilityHUD();
   updateAmmoHUD();
+  updateVehicleHUD();
   document.getElementById('cross').classList.toggle('aim',mouse.rdown&&!player.inCar);
+}
+function updateVehicleHUD(){
+  const el=document.getElementById('vehHUD');
+  if(!player.inCar){ el.style.display='none'; return; }
+  el.style.display='block';
+  const c=player.inCar;
+  document.getElementById('vehFuel').style.width=Math.max(0,c.fuel)+'%';
+  document.getElementById('vehHP').style.width=(c.hp/c.maxHp*100)+'%';
+  const st=radioStations[c.radio]||radioStations[radioStations.length-1];
+  const rEl=document.getElementById('vehRadio'); rEl.textContent=st.tag; rEl.style.color=st.color;
 }
 function updateAbilityHUD(){
   const hero=G.hero;
@@ -1916,10 +2236,10 @@ function notice(s){ noticeEl.textContent=s; noticeEl.classList.add('show'); noti
 
 /* ---------- Missions ---------- */
 const missions=[
-  {name:'Hostile Sweep',desc:'Eliminate the hostile cells in the sector',target:8},
-  {name:'Secure the Plaza',desc:'Hold the central plaza against waves',target:12},
-  {name:'Hunter Killer',desc:'Take down 3 heavy hostiles',target:3,filter:'heavy'},
-  {name:'City Cleanup',desc:'Clear 15 hostiles across the city',target:15},
+  {name:'Gang Sweep',desc:'Clear the rival crew off these blocks',target:8},
+  {name:'Hold the Corner',desc:'Defend your turf against the rival gang',target:12},
+  {name:'Heavy Hitter',desc:'Take down 3 of their enforcers',target:3,filter:'heavy'},
+  {name:'Clean Sweep',desc:'Run 15 rivals out of the city',target:15},
 ];
 function startMission(){
   // bare start — no automatic combat mission. The city is open; crime triggers the wanted system.
@@ -1934,7 +2254,7 @@ function updateMission(dt){
   let killed=G.elim;
   document.getElementById('mp').textContent=killed+' / '+G.mission.target;
   if(killed>=G.mission.target){
-    G.score+=500; notice('MISSION COMPLETE: +500'); sndPickup();
+    G.score+=500; notice('JOB DONE: +500'); sndPickup();
     G.mission=null; updateScoreHUD();
     setTimeout(()=>{ if(G.running&&!G.over) startMission(); },4000);
   }
@@ -1998,7 +2318,7 @@ function resetPlayer(){ player.x=ROAD0; player.z=ROAD0; player.vx=0; player.vz=0
 /* ---------- Spawn world ---------- */
 function spawnWorld(){
   const types=['sedan','sedan','sports','truck','sedan','sports'];
-  for(let i=0;i<20;i++){ const p=pointFarFromPlayer(30,HALF-10); G.cars.push(makeCar(p.x,p.z,Math.random()*TAU,pick(carColors),pick(types))); }
+  for(let i=0;i<20;i++){ const p=pointFarFromPlayer(30,HALF-10); const c=makeCar(p.x,p.z,Math.random()*TAU,pick(carColors),pick(types)); c.occupied=Math.random()<0.5; G.cars.push(c); }
   for(let i=0;i<8;i++){ const p=pointNearPlayer(8,30); spawnPickup(p.x,p.z,pick(['health','armor','ammo'])); }
   // weapon pickups scattered around the city — find them to arm yourself
   const wkeys=['pistol','pistol','smg','shotgun','rifle','sniper','pistol','smg'];
@@ -2007,10 +2327,12 @@ function spawnWorld(){
   for(let i=0;i<6;i++){ const p=pointFarFromPlayer(20,HALF-15); addStore(p.x,p.z); }
 }
 
-/* ---------- Start UI (no class/role selection — you start as a civilian) ---------- */
+/* ---------- Start UI (you spawn as a civilian — no hero/role picking) ---------- */
 function buildHeroSelect(){
+  // forever a civilian: lock to index 0, hide the ability HUD, never offer a choice
+  G.heroIdx=0;
   const btn=document.getElementById('startBtn');
-  if(btn) btn.onclick=()=>{ G.heroIdx=0; selectHero(0); document.getElementById('heroSelect').style.display='none'; startGame(); };
+  if(btn) btn.onclick=()=>{ selectHero(0); document.getElementById('heroSelect').style.display='none'; startGame(); };
 }
 
 /* ---------- Start game ---------- */
@@ -2022,6 +2344,8 @@ function startGame(){
   startMission();
   G.running=true; G.money=0; G.wanted=0; G.wantedKnown=false; G.cops=[]; G.copCars=[];
   document.getElementById('hud').classList.add('on');
+  // the civilian has no abilities — hide the ability HUD entirely (no E/Q/X panel)
+  document.getElementById('abilities').style.display='none';
   updateScoreHUD(); updateMoneyHUD();
   initAudio();
   if(!isTouch()) renderer.domElement.requestPointerLock && renderer.domElement.requestPointerLock();
